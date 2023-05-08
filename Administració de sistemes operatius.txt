@@ -1,0 +1,1560 @@
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+1. Llen­guat­ges de guions de shell
+En l’àmbit de la infor­mà­tica, un pro­grama és una seqüèn­cia d’ins­truc­ci­ons que un ordi­na­dor ha
+d’exe­cu­tar per dur a terme una tasca deter­mi­nada. El llen­guatge de pro­gra­ma­ció deter­mina la forma
+amb què el pro­gra­ma­dor ha d’escriure les ope­ra­ci­ons que l’ordi­na­dor ha de rea­lit­zar. De llen­guat­‐
+ges de pro­gra­ma­ció n’exis­tei­xen cen­te­nars, i cada any en sor­gei­xen de nous o ver­si­ons millo­ra­des
+dels exis­tents, que n’amplien les carac­te­rís­ti­ques per adap­tar-se a les neces­si­tats tec­no­lò­gi­ques de
+cada moment.
+Els intèr­prets d’ordres o shells són pro­gra­mes que per­me­ten la interac­ció dels usu­a­ris amb el sis­‐
+tema ope­ra­tiu i, més enllà d’aquesta fun­ció, també incor­po­ren llen­guat­ges de pro­gra­ma­ció que per­‐
+me­ten crear pro­gra­mes que ano­me­nem guions. Els guions de shell són molt útils per fer tas­ques
+d’admi­nis­tra­ció del sis­tema i altres tre­balls repe­ti­tius que no reque­rei­xen un llen­guatge de pro­gra­‐
+ma­ció més sofis­ti­cat.
+
+1.1. Con­cep­tes pre­vis
+Abans d’abor­dar l’estudi dels llen­guat­ges de guions de shell, fem un repàs d’alguns con­cep­tes pre­‐
+vis.
+
+1.1.1. Llen­guat­ges de pro­gra­ma­ció
+Un llen­guatge de pro­gra­ma­ció és un llen­guatge infor­mà­tic usat per con­tro­lar el com­por­ta­ment
+d’una màquina, nor­mal­ment un ordi­na­dor. Cada llen­guatge té una sèrie de regles sin­tàc­ti­ques i
+semàn­ti­ques estric­tes que cal seguir per escriure un pro­grama infor­mà­tic, i que en des­cri­uen
+l’estruc­tura i el sig­ni­fi­cat res­pec­ti­va­ment. Aques­tes regles per­me­ten espe­ci­fi­car les dades amb què
+tre­ba­llarà el pro­grama i les acci­ons que rea­lit­zarà.
+El llen­guatge de màquina o codi màquina és l’únic llen­guatge de pro­gra­ma­ció que poden enten­dre
+direc­ta­ment els cir­cuits micro­pro­gra­ma­bles de l’ordi­na­dor, com ara el micro­pro­ces­sa­dor. El codi
+màquina està for­mat exclu­si­va­ment per codi binari, és a dir, per zeros (0) i uns (1). Un pro­grama
+escrit en codi màquina con­sis­teix en un seguit d’ins­truc­ci­ons i dades codi­fi­cats en binari. El llen­‐
+guatge de màquina és espe­cí­fic de cada màquina, mal­grat que el con­junt d’ins­truc­ci­ons dis­po­ni­bles
+pugui ser simi­lar.
+Codi binari
+Els cir­cuits interns de l’ordi­na­dor tre­ba­llen amb dos
+nivells de ten­sió que de manera abs­tracta repre­sen­tem amb
+el 0 i l’1. Per això el llen­guatge màquina només uti­litza
+aquests dos sím­bols.
+
+Els llen­guat­ges de pro­gra­ma­ció se solen clas­si­fi­car prin­ci­pal­ment en llen­guat­ges de nivell baix,
+que són molt pro­pers al codi màquina uti­lit­zat inter­na­ment per un tipus d’ordi­na­dor deter­mi­nat, i
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+1/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+llen­guat­ges de nivell alt, que són més pro­pers al llen­guatge humà (nor­mal­ment l’idi­oma anglès) i
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+més inde­pen­dents del tipus d’ordi­na­dor.
+Un llen­guatge de pro­gra­ma­ció d’alt nivell és un llen­guatge que, en com­pa­ra­ció amb els llen­guat­ges
+de nivell baix, ofe­reix un nivell d’abs­trac­ció més alt, és més fàcil d’uti­lit­zar i més por­ta­ble entre
+pla­ta­for­mes de maqui­nari. L’objec­tiu d’aquests llen­guat­ges de pro­gra­ma­ció és alli­be­rar als pro­gra­‐
+ma­dors de tas­ques com­ple­xes i aug­men­tar la pro­duc­ti­vi­tat i l’efi­ci­èn­cia en la gene­ra­ció de codi. Per
+posar un exem­ple, els llen­guat­ges de pro­gra­ma­ció de nivell alt no s’encar­re­guen direc­ta­ment de la
+ges­tió dels mapes de memò­ria. En canvi, en un pro­grama escrit en un llen­guatge de nivell baix, les
+dades uti­lit­za­des són refe­ren­ci­a­des per la seva posi­ció en memò­ria, és a dir, és res­pon­sa­bi­li­tat del
+pro­gra­ma­dor con­tro­lar el mapa de memò­ria i l’assig­na­ció de memò­ria a cada dada.
+Avui dia exis­teix una gran quan­ti­tat de llen­guat­ges de pro­gra­ma­ció de nivell alt. Es tracta d’un grup
+molt hete­ro­geni amb una gran diver­si­tat de carac­te­rís­ti­ques i objec­tius. Alguns exem­ples de llen­‐
+guat­ges de nivell alt, més o menys espe­ci­a­lit­zats en dife­rents tas­ques, són Java, PHP, C, C++, Pyt­‐
+hon, Visual Basic .NET, C#, Ruby, Cobol, Perl, JavaS­cript, etc.
+
+Llen­guat­ges de pro­gra­ma­ció
+La dife­rèn­cia entre llen­guat­ges de nivell baix i alt es fa evi­dent com­pa­rant dos pro­gra­mes que
+escri­uen “Hola” a la pan­ta­lla, el pri­mer usant llen­guatge assem­bla­dor per màqui­nes x86
+(nivell baix) i el segon uti­lit­zant el llen­guatge de pro­gra­ma­ció Pyt­hon (nivell alt).
+Pro­grama en llen­guatge assem­bla­dor
+.MODEL SMALL
+IDEAL
+STACK 100H
+DATASEG
+HW DB 'Hola!$'
+CODESEG
+MOV AX,
+MOV DS,
+MOV DX,
+MOV AH,
+INT 21H
+MOV AX,
+INT 21H
+END
+
+@data
+AX
+OFFSET HW
+09H
+4C00H
+
+Pro­grama en llen­guatge d’alt nivell Pyt­hon
+print "Hola!"
+
+1.1.2. Codi font
+El codi font d’un pro­grama es refe­reix a la sèrie d’ins­truc­ci­ons escri­tes en algun llen­guatge de pro­‐
+gra­ma­ció lle­gi­ble per l’home que con­for­men el pro­grama. El codi font no és direc­ta­ment exe­cu­ta­‐
+ble per l’ordi­na­dor, sinó que ha de ser tra­duït a llen­guatge de màquina que sí podrà ser exe­cu­tat pel
+maqui­nari de l’ordi­na­dor. Per a aquesta tra­duc­ció, depe­nent del tipus de llen­guatge uti­lit­zat, s’usen
+els ano­me­nats com­pi­la­dors i intèr­prets.
+
+Pro­gra­mari lliure i pro­gra­mari pro­pi­e­tari
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+2/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Un aspecte a tenir en compte quan es parla del codi font d’un pro­grama infor­mà­tic és si la
+DE
+OPERATIUS
+seva lli­cèn­cia ADMINISTRACIÓ
+per­met que aquest codi font
+esti­SISTEMES
+gui dis­po­ni­ble per­
+què qual­se­vol pugui estu­diarlo, modi­fi­car-lo o reu­ti­lit­zar-lo lliu­re­ment. Quan es com­pleix aquest aspecte es parla de pro­‐
+gra­mari lliure, en con­tra­po­si­ció al pro­gra­mari pro­pi­e­tari (o pri­va­tiu), que, nor­mal­ment, no va
+acom­pa­nyat del codi font ni de cap de les lli­ber­tats esmen­ta­des.
+
+1.1.3. Llen­guat­ges com­pi­lats i llen­guat­ges inter­pre­tats
+Els pro­gra­mes escrits en llen­guat­ges de pro­gra­ma­ció d’alt nivell no es poden exe­cu­tar direc­ta­ment
+a la màquina. És neces­sari exe­cu­tar un pro­cés de tra­duc­ció del llen­guatge d’alt nivell a llen­guatge
+màquina. Aquesta tra­duc­ció pot ser una com­pi­la­ció (llen­guat­ges com­pi­lats), una inter­pre­ta­ció (llen­‐
+guat­ges inter­pre­tats) o una com­bi­na­ció de les dues opci­ons ante­ri­ors (llen­guat­ges híbrids).
+La imple­men­ta­ció d’un llen­guatge de pro­gra­ma­ció és la que pro­ve­eix una manera per­què s’exe­cuti
+un pro­grama. Un llen­guatge com­pi­lat es refe­reix a un llen­guatge de pro­gra­ma­ció que típi­ca­ment
+s’imple­menta mit­jan­çant un com­pi­la­dor.
+Alguns exem­ples de llen­guat­ges com­pi­lats són For­tran, C,
+C++, Ada, Cobol i Visual Basic.
+
+Un com­pi­la­dor d’un deter­mi­nat llen­guatge de pro­gra­ma­ció és un pro­grama que lle­geix un fit­xer en
+codi font escrit en aquest llen­guatge de pro­gra­ma­ció i el con­ver­teix en una seqüèn­cia de codi
+màquina per a una pla­ta­forma deter­mi­nada (Intel, Sparc, etc.). El codi tra­duït pot ser­vir com a
+entrada d’un altre intèr­pret o un altre com­pi­la­dor. Un com­pi­la­dor ano­me­nat de codi natiu és el que
+tra­du­eix el codi font d’un pro­grama direc­ta­ment a codi màquina exe­cu­ta­ble. Sovint, però, aquest
+pro­cés se separa en més d’una fase, per exem­ple, en una gene­ra­ció de codi objecte i un enlla­çat, tal
+com es veu a la figura 1.1.
+Alguns exem­ples de llen­guat­ges inter­pre­tats són Perl,
+PHP, Pyt­hon, Bash i JavaS­cript.
+
+Un llen­guatge inter­pre­tat és aquell en què les ins­truc­ci­ons es tra­du­ei­xen o inter­pre­ten una per una
+en temps d’exe­cu­ció a un llen­guatge inter­medi o llen­guatge màquina.
+Un intèr­pret d’un llen­guatge de pro­gra­ma­ció és un pro­grama que lle­geix les ordres del codi font,
+en com­prova la sin­taxi i exe­cuta el codi rela­ci­o­nat amb aques­tes ordres.
+Els prin­ci­pals avan­tat­ges d’una imple­men­ta­ció inter­pre­tada res­pecte d’una com­pi­lada són la seva
+inde­pen­dèn­cia res­pecte de la pla­ta­forma i que per­met dis­mi­nuir el cost de pro­gra­ma­ció, en el sen­tit
+que per­met desen­vo­lu­par i pro­var el pro­grama més ràpi­da­ment. El des­a­van­tatge és que l’exe­cu­ció
+d’un pro­grama inter­pre­tat nor­mal­ment és més lenta que la d’un pro­grama com­pi­lat i neces­sita més
+recur­sos (memò­ria, CPU, etc.).
+Figura 1.1. Com­pi­la­ció i inter­pre­ta­ció
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+3/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+1.1.4. Llen­guat­ges de guions
+Els llen­guat­ges de guions, també cone­guts amb el nom de llen­guat­ges d’scrip­ting, són un tipus de
+llen­guat­ges de pro­gra­ma­ció d’alt nivell que poden ser de pro­pò­sit gene­ral o de pro­pò­sit espe­cí­fic i
+gai­rebé sem­pre són llen­guat­ges inter­pre­tats. Els pro­gra­mes escrits amb aquests llen­guat­ges s’ano­‐
+me­nen guions o scripts.
+Els llen­guat­ges de guions tenen el seu ori­gen en els llen­guat­ges de con­trol de tas­ques, con­cre­ta­ment
+en el JCL (job con­trol lan­guage), uti­lit­zat als main­framed’IBM per a la pro­gra­ma­ció de tre­balls per
+lots.
+Tre­ball per lots
+Es coneix com a tre­ball per lots o batch job un tipus de
+pro­gra­mes que s’exe­cu­ten sense el con­trol o super­vi­sió
+directa de l’usu­ari.
+
+El JCL és un llen­guatge amb poques capa­ci­tats de pro­gra­ma­ció i amb un pro­pò­sit molt espe­cí­fic.
+En canvi, molts dels llen­guat­ges de guions actu­als, com ara el Pyt­hon o el Perl, són llen­guat­ges de
+pro­gra­ma­ció potents que per­me­ten desen­vo­lu­par apli­ca­ci­ons de pro­pò­sit gene­ral.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+4/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Els llen­guat­ges de guions sovint s’uti­lit­zen per ampliar les pres­ta­ci­ons que ofe­reix un altre llen­‐
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+guatge, entorn o apli­ca­ció. En aquest sen­tit són molt uti­lit­zats en el desen­vo­lu­pa­ment d’apli­ca­ci­ons
+web:
+1. Scripts de nave­ga­dors web. S’uti­lit­zen per ampliar les capa­ci­tats de l’HTML i per inse­rir
+acci­ons en pàgi­nes web. Per­me­ten crear efec­tes espe­ci­als i apor­ten interac­ti­vi­tat. Els scripts
+són inter­pre­tats i exe­cu­tats en la màquina cli­ent pel nave­ga­dor web, el qual ha d’incor­po­rar
+l’intèr­pret del llen­guatge. Un exem­ple de llen­guatge d’aquest tipus molt uti­lit­zat és JavaS­cript.
+2. Scripts de ser­vi­dor. Són pro­gra­mes que per­me­ten donar fun­ci­o­na­li­tats a les pàgi­nes web que
+no es poden resol­dre només amb els scripts de nave­ga­dor. Els scripts de ser­vi­dor per­me­ten
+dotar de certa “intel·ligèn­cia” els llocs web, la qual cosa fa que gene­rin pàgi­nes dife­rents
+segons les cir­cums­tàn­cies. Un dels llen­guat­ges més uti­lit­zats en aquest àmbit és PHP.
+
+Llen­guatge PHP
+Alguns llen­guat­ges de guions ser­vei­xen per a més d’un pro­pò­sit. Per exem­ple, encara que en
+el dis­seny del llen­guatge PHP tot està ori­en­tat a faci­li­tar la cre­a­ció de llocs web, és pos­si­ble
+crear apli­ca­ci­ons amb una inter­fí­cie grà­fica per a l’usu­ari, uti­lit­zant l’exten­sió PHP-Qt o
+PHP-GTK. També pot ser usat des de la línia d’ordres amb el PHP-CLI (com­mand line inter­‐
+face).
+
+En l’àmbit dels sis­te­mes ope­ra­tius, els intèr­prets d’ordres incor­po­ren un tipus de llen­guat­ges de
+guions que ano­me­nem llen­guat­ges de guions de shell, que s’uti­lit­zen amb diver­sos pro­pò­sits.
+
+1.2. Intèr­prets d'ordres o shells
+
+Un intèr­pret de línia d’ordres o sim­ple­ment intèr­pret d’ordres, és un pro­‐
+grama infor­mà­tic que té la fun­ció de lle­gir línies de text (ordres) escri­tes en un
+ter­mi­nal o en un fit­xer de text i inter­pre­tar-les.
+
+Les ordres s’escri­uen seguint la sin­taxi incor­po­rada per aquest intèr­pret. En lle­gir l’ordre, l’intèr­‐
+pret ana­litza la seqüèn­cia de caràc­ters i, si la sin­taxi de l’ordre és cor­recta, passa l’ordre inter­pre­‐
+tada al sis­tema ope­ra­tiu o al pro­grama que repre­senta (una ses­sió d’FTP, una ses­sió d’SSH, etc.)
+per­què l’exe­cuti.
+Dis­po­si­tius de xarxa
+Els dis­po­si­tius de xarxa que poden ser con­fi­gu­rats per pro­‐
+gra­mari nor­mal­ment dis­po­sen d’una inter­fí­cie de línia
+d’ordres. Per exem­ple, el sis­tema ope­ra­tiu IOS de Cisco
+dis­posa d’una inter­fí­cie de línia d’ordres que és uti­lit­zada
+per exe­cu­tar ordres de con­fi­gu­ra­ció, super­vi­sió i man­te­ni­‐
+ment dels dis­po­si­tius de Cisco, ja sigui amb una con­sola
+de l’enca­mi­na­dor (rou­ter), amb un ter­mi­nal o a par­tir de
+mèto­des d’accés remot.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+5/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+Els intèr­prets d’ordres dels sis­te­mes ope­ra­tius també es conei­xen amb el nom
+de shell. El shell és un pro­grama encar­re­gat de lle­gir les ordres que tecleja
+l’usu­ari i con­ver­tir-les en ins­truc­ci­ons que el sis­tema ope­ra­tiu pot exe­cu­tar.
+
+Anti­ga­ment la interac­ció dels usu­a­ris amb el sis­tema ope­ra­tiu es feia úni­ca­ment mit­jan­çant inter­fí­‐
+cies de línia d’ordres, atès que no exis­tien ordi­na­dors amb la capa­ci­tat de mos­trar grà­fics o imat­ges.
+El terme shellva apa­rèi­xer a la dècada dels 70 amb el sis­tema ope­ra­tiu Unix, que va ser pio­ner en el
+con­cepte d’un entorn de línia d’ordres potent. La tra­duc­ció de shell seria “embol­call o closca”, per­‐
+què envolta la resta de capes del sis­tema a mode de closca. Tal com es pot apre­ciar a la figura 1.2,
+el shell és la capa més externa i actua com a inter­fí­cie entre l’usu­ari i la resta del sis­tema.
+Figura 1.2. Capes del sis­tema ope­ra­tiu Unix
+
+De vega­des es con­fo­nen els ter­mes d’intèr­pret d’ordres i sis­tema ope­ra­tiu i, de manera errò­nia,
+s’iden­ti­fi­quen l’un amb l’altre.
+
+L’intèr­pret d’ordres és el que els usu­a­ris veuen del sis­tema i està escrit de la
+mateixa manera que un pro­grama d’usu­ari. No està inte­grat en el nucli del sis­‐
+tema ope­ra­tiu, sinó que s’exe­cuta com un pro­grama més de l’usu­ari.
+
+El sis­tema ope­ra­tiu sem­pre està situat en un nivell infe­rior als pro­gra­mes, i l’intèr­pret d’ordres o
+shell és un pro­grama més que té la tasca de lle­gir les ordres que li dóna l’usu­ari, rea­lit­zar una serie
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+6/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+de fun­ci­ons d’anà­lisi i pas­sar les ordres inter­pre­ta­des al nucli del sis­tema ope­ra­tiu per­què les exe­‐
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+cuti, com es veu a la figura 1.3.
+Figura 1.3. Inter­pre­ta­ció d’ordres
+
+En l’actu­a­li­tat gai­rebé tots els sis­te­mes ope­ra­tius dis­po­sen d’inter­fí­cies grà­fi­ques d’usu­ari (GUI,
+grap­hi­cal user inter­face) que per­me­ten interac­tuar amb el sis­tema d’una manera molt més sen­zi­lla
+que amb la línia d’ordres, cosa que faci­lita les tas­ques de l’usu­ari. Amb tot, les inter­fí­cies de línies
+d’ordres con­ti­nuen sent una eina de tre­ball molt uti­lit­zada en l’àmbit de l’admi­nis­tra­ció de sis­te­mes
+i xar­xes, espe­ci­al­ment per a l’auto­ma­tit­za­ció de tas­ques.
+
+1.2.1. Llen­guat­ges de guions de shell
+
+La majo­ria dels intèr­prets d’ordres de tots els sis­te­mes ope­ra­tius comp­ten amb
+un llen­guatge de pro­gra­ma­ció propi per escriure pro­gra­mes que ano­me­nem de
+diver­ses mane­res: pro­gra­mes per lots, arxius d’ordres, guions de shell o shell
+scripts.
+
+El terme script
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+7/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+El terme anglès script es va aga­far del guió escrit de les
+
+ADMINISTRACIÓ
+SISTEMES
+arts escè­ni­ques, el qualDE
+és inter­
+pre­tat per unaOPERATIUS
+sèrie d’actors
+i actrius (o, en el nos­tre cas, pro­gra­mes) seguint un ordre
+esta­blert. En alguns tex­tos es tra­du­eix script com a guió i
+en d’altres s’uti­litza l’expres­sió arxiu d’ordres.
+
+Els llen­guat­ges de guions de shell o de shell scrip­ting són molt uti­lit­zats en l’àmbit de l’admi­nis­‐
+tra­ció de sis­te­mes ope­ra­tius, per­què per­me­ten fer pro­gra­mes com­bi­nant cri­des a ordres del sis­tema,
+pro­gra­mes com­pi­lats, d’altres guions, etc. En prin­cipi són llen­guat­ges pen­sats per a l’auto­ma­tit­za­‐
+ció de tas­ques en un sis­tema ope­ra­tiu però real­ment la majo­ria per­me­ten crear apli­ca­ci­ons de pro­‐
+pò­sit gene­ral.
+Els intèr­prets d’ordres inter­pre­ten guions escrits en el llen­guatge que saben inter­pre­tar. Alguns
+intèr­prets d’ordres també incor­po­ren el motor intèr­pret d’altres llen­guat­ges a més del seu propi, la
+qual cosa per­met l’exe­cu­ció d’scripts en aquests llen­guat­ges direc­ta­ment al mateix intèr­pret.
+
+1.2.2. Auto­ma­tit­za­ció de tas­ques amb guions de shell
+En gene­ral, no hi ha una manera única de fer les coses, però nor­mal­ment algu­nes eines són més
+indi­ca­des per a deter­mi­nats pro­pò­sits que d’altres.
+
+Els llen­guat­ges de guions de shell ofe­rei­xen un entorn de pro­gra­ma­ció ràpid per
+a l’auto­ma­tit­za­ció de tas­ques de man­te­ni­ment i con­fi­gu­ra­ció del sis­tema.
+
+Les prin­ci­pals raons que por­ten l’admi­nis­tra­dor del sis­tema a imple­men­tar l’auto­ma­tit­za­ció de tas­‐
+ques mit­jan­çant la cre­a­ció de shell scripts són les següents:
+Exe­cu­ció de tas­ques repe­ti­ti­ves. Els admi­nis­tra­dors de sis­te­mes sovint repe­tei­xen seqüèn­cies
+d’ordres (com una alta mas­siva d’usu­a­ris) o bé alguna línia d’ordres llarga i com­plexa. Fer un
+script pro­por­ci­ona una manera ràpida i segura d’exe­cu­tar aques­tes seqüèn­cies o línies
+d’ordres.
+Pla­ni­fi­ca­ció de tas­ques. Hi ha mol­tes tas­ques que han de dur-se a terme amb una base regu­lar
+(fer còpies de segu­re­tat, nete­jar fit­xers de regis­tre o fit­xers tem­po­rals, etc.). Mit­jan­çant la rea­‐
+lit­za­ció de guions de shell i el pla­ni­fi­ca­dor de tas­ques es poden pro­gra­mar aques­tes tas­ques
+per­què es duguin a terme de manera auto­mà­tica i peri­ò­dica.
+Dele­gar tas­ques. Hi ha tas­ques de man­te­ni­ment del sis­tema que es poden o que s’han de
+dele­gar a d’altres usu­a­ris (ope­ra­dors, admi­nis­tra­dors menys expe­ri­men­tats, etc.). El fet
+d’uti­lit­zar shell scripts per imple­men­tar aques­tes tas­ques pro­por­ci­ona una manera per­què
+els usu­a­ris menys experts puguin apren­dre, ja que en poden ana­lit­zar el codi i fins i tot
+man­te­nir-lo a mesura que el seu apre­nen­tatge i habi­li­tats pro­gres­sen.
+Per­so­na­lit­za­ció de l’inici de ser­veis. És habi­tual que en admi­nis­trar un ser­vi­dor haguem
+de dis­se­nyar els nos­tres pro­pis ser­veis per fer alguna tasca con­creta. En la majo­ria de sis­‐
+te­mes ope­ra­tius (Unix, Win­dows, etc.), la rea­lit­za­ció de guions de shell ens per­met
+l’auto­ma­tit­za­ció de l’inici i l’atu­rada de ser­veis.
+Vegeu la imple­men­ta­ció de shell scripts per auto­ma­tit­zar
+tas­ques d’admi­nis­tra­ció del sis­tema en l’apar­tat “Auto­ma­‐
+tit­za­ció de tas­ques del sis­tema” d’aquesta uni­tat.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+8/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+1.2.3. Shells del sis­tema ope­ra­tiu Win­dows
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+En els sis­te­mes ope­ra­tius Win­dows de Micro­soft la interac­ció de l’usu­ari amb el sis­tema ope­ra­tiu es
+fa gene­ral­ment uti­lit­zant la inter­fí­cie grà­fica inte­grada en el propi sis­tema ope­ra­tiu, però també dis­‐
+po­sem d’intèr­prets d’ordres que ens per­me­ten interac­ci­o­nar i crear guions per auto­ma­tit­zar tas­ques.
+Els intèr­prets d’ordres exis­tents per a aquests sis­te­mes són els següents:
+Es pot acce­dir a l’intèr­pret d’ordres cmd.​exe dels sis­te­mes
+Win­dows a Inici > Exe­cu­tar > cmd.
+
+COM­MAND.​COM és el nom de l’intèr­pret d’ordres per a DOS i per a ver­si­ons de Win­dows
+de 16/32 bits (95/98/98 SE/Me). Té dos modes d’exe­cu­ció, el mode interac­tiu, en el qual
+l’usu­ari escriu ordres per ser exe­cu­ta­des, i el mode per lots (batch), que exe­cuta una seqüèn­cia
+pre­de­fi­nida d’ordres guar­dada en un arxiu de text amb l’exten­sió .bat i que se sol ano­me­nar
+pro­grama per lots.
+L’exe­cu­ta­ble cmd.​exe és l’intèr­pret d’ordres dels sis­te­mes basats en Win­dows NT (inclo­ent
+Win­dows 2000, XP, Ser­ver 2003, Vista i 7). És l’equi­va­lent de COM­MAND.​COM a MS-DOS
+i sis­te­mes de la famí­lia Win­dows 9x. En rea­li­tat, cmd.​exe és un pro­grama de Win­dows que
+actua com un intèr­pret d’ordres de tipus DOS. En gene­ral és com­pa­ti­ble, però pro­por­ci­ona
+exten­si­ons que eli­mi­nen algu­nes de les limi­ta­ci­ons de COM­MAND.​COM.
+Win­dows PowerS­hell és una inter­fí­cie de con­sola per a sis­te­mes ope­ra­tius Win­dows llan­çada
+el 2006 que té com a uti­li­tat prin­ci­pal l’auto­ma­tit­za­ció de tas­ques admi­nis­tra­ti­ves. Les fun­ci­‐
+ons d’inter­pre­ta­ció i de pro­gra­ma­ció de guions estan molt millo­ra­des res­pecte a cmd.​exe.
+Aquesta inter­fí­cie no està ins­tal·lada per defecte en el sis­tema i reque­reix de la ins­tal·lació
+prè­via del fra­mework (entorn de tre­ball) .NET ver­sió 2.0 per al seu fun­ci­o­na­ment. Per­met
+interac­tuar amb el sis­tema ope­ra­tiu i amb pro­gra­mes de Micro­soft com SQL Ser­ver, Exc­hange
+o IIS. La carac­te­rís­tica dis­tin­tiva d’aquest intèr­pret d’ordres res­pecte als tra­di­ci­o­nals és que
+està ori­en­tat a objec­tes. La figura 1.4 mos­tra una imatge d’una fines­tra de Win­dows PowerS­‐
+hell.
+Vegeu més infor­ma­ció sobre el llen­guatge de guions Win­‐
+dows PowerS­hell a la pàgina ofi­cial de Micro­soft “Scrip­‐
+ting with Win­dows PowerS­hell”, que tro­ba­reu a la sec­ció
+d’enlla­ços d’interès dels mate­ri­als web del mòdul.
+
+Figura 1.4. Fines­tra de Win­dows PowerS­hell
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+9/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+1.2.4. Shells del sis­tema ope­ra­tiu Unix i deri­vats
+Un sis­tema ope­ra­tiu de tipus Unix o deri­vat és aquell que com­par­teix mol­tes de les carac­te­rís­ti­ques
+del sis­tema ope­ra­tiu Unix, que va ser escrit al 1969 per, entre d’altres, Ken Thomp­son, Den­nis Ritc­‐
+hie i Dou­glas McIl­roy als Labo­ra­to­ris Bell. En l’actu­a­li­tat hi ha molts sis­te­mes ope­ra­tius de tipus
+Unix, com ara totes les dis­tri­bu­ci­ons GNU/Linux o el sis­tema ope­ra­tiu Mac OS X.
+
+Sis­te­mes ope­ra­tius de tipus Unix
+Una dis­tri­bu­ció GNU/Linux o sim­ple­ment dis­tri­bu­ció Linux és un sis­tema ope­ra­tiu de tipus
+Unix que con­sis­teix en el nucli de Linux, lli­bre­ries i uti­li­tats del pro­jecte GNU, i un con­junt
+de pro­gra­mari de ter­cers que per­met afe­gir una sèrie d’apli­ca­ci­ons d’ús molt ampli, com ara
+escrip­tori grà­fic, ofi­mà­tica, nave­ga­dors, etc. Tant el nucli com la majo­ria de pro­gra­mari que
+for­men les dis­tri­bu­ci­ons Linux són de codi lliure. Exis­tei­xen cen­te­nars de dis­tri­bu­ci­ons, en
+cons­tant revi­sió i desen­vo­lu­pa­ment. Alguns dels noms més cone­guts són Fedora (Red Hat),
+open­SUSE (Novell), Ubuntu (Cano­ni­cal Ltd), Man­driva Linux (Man­driva) i les dis­tri­bu­ci­ons
+Debian i Gen­too les quals tenen un model de desen­vo­lu­pa­ment inde­pen­dent d’empre­ses i
+estan cre­a­des pels seus pro­pis usu­a­ris.
+Mac OS X és el sis­tema ope­ra­tiu de codi pro­pi­e­tari (amb part de codi obert) basat en Unix
+que uti­lit­zen els ordi­na­dors Macin­tosh de la com­pa­nyia Apple Inc. A la X que acom­pa­nya el
+nom Mac OS se li atri­bu­ei­xen dos sig­ni­fi­cats: el de nume­ral romà 10 (ja que les ver­si­ons del
+Mac OS ano­me­nat “Clas­sic” aca­ben al 9) i la dar­rera lle­tra del mot Unix.
+
+En els sis­te­mes Unix i deri­vats, la interac­ció de l’usu­ari amb el sis­tema ope­ra­tiu es pot fer amb
+mode grà­fic o amb mode text. En aquests tipus de sis­te­mes hi ha una gran vari­e­tat d’intèr­prets
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+10/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+d’ordres. A la taula 1.1 en podem veure el nom dels més relle­vants amb una breu des­crip­ció i les
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+seves carac­te­rís­ti­ques.
+Taula: 1.1. Alguns dels shells dis­po­ni­bles als sis­te­mes de tipus Unix
+Nom del
+shell
+
+Pro­‐
+grama
+
+Des­crip­ció i carac­te­rís­ti­ques
+
+Bourne
+
+/bin/sh
+
+És un dels pri­mers shells que es van desen­vo­lu­par i és un dels intèr­prets més cone­guts. Va ser
+escrit per Steve Bourne als Labo­ra­to­ris Bell i es va con­ver­tir en un estàn­dard de facto.
+
+Alm­quist
+
+/bin/ash
+
+Va ser escrit com una subs­ti­tu­ció del shell Bourne però amb lli­cèn­cia BSD.
+
+Bash
+
+/bin/bash
+
+Basat en el shell Bourne, va ser escrit com a part del pro­jecte GNU. És el shell estàn­dard de la
+majo­ria de sis­te­mes GNU/Linux i de Mac OS X.
+
+Debian
+Alm­quist
+
+/bin/dash
+
+Una subs­ti­tu­ció del shell ash per a les dis­tri­bu­ci­ons Debian i basa­des en Debian, com ara
+Ubuntu.
+
+C
+
+/bin/csh
+
+Es tracta del segon shell d’Unix. Fou dis­se­nyat per faci­li­tar l’ús interac­tiu afe­gint-hi noves
+fun­ci­ons. La seva sin­taxi és molt sem­blant al llen­guatge C de pro­gra­ma­ció i el seu ús és més
+comú en els sis­te­mes Unix de Berke­ley.
+
+TENEX C
+
+/bin/tcsh
+
+Essen­ci­al­ment és el shell C amb alguna carac­te­rís­tica millo­rada de la línia d’ordres.
+
+Korn
+
+/bin/ksh
+
+És el ter­cer shell d’Unix, fruit de l’evo­lu­ció del shell Bourne amb carac­te­rís­ti­ques del shell C.
+És un shell estàn­dard del sis­tema Unix Sys­tem V.
+
+Z
+
+/bin/zsh
+
+És con­si­de­rat el shell més com­plet, en el sen­tit que és el que té més fun­ci­o­na­li­tats. Engloba
+carac­te­rís­ti­ques d’sh, ash, bash, csh, ksh i tcsh.
+
+Un dels aspec­tes que carac­te­ritza un sis­tema ope­ra­tiu de tipus Unix és el fet que és mul­tiu­su­ari, és a
+dir, per­met l’ús del mateix ordi­na­dor a més d’un usu­ari al mateix temps (per exem­ple, a tra­vés
+d’SSH). Per a cada ses­sió d’usu­ari, el sis­tema genera un shell propi per a ell que actua com a intèr­‐
+pret interac­tiu de les ordres que l’usu­ari exe­cuta, la qual cosa per­met que els usu­a­ris puguin triar un
+shell o un altre d’acord amb les seves neces­si­tats. La figura 1.5 mos­tra grà­fi­ca­ment l’exis­tèn­cia de
+dife­rents shells en el dia­grama de capes d’Unix.
+Figura 1.5. Dia­grama de capes d’Unix amb dife­rents shells
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+11/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+El fet que el shell esti­gui sepa­rat de la resta del sis­tema ope­ra­tiu pro­por­ci­ona
+fle­xi­bi­li­tat, per­què per­met selec­ci­o­nar la inter­fí­cie més ade­quada a les neces­si­‐
+tats de cada usu­ari.
+
+El fit­xer /etc/shells dóna infor­ma­ció sobre els shells vàlids per ini­ciar ses­sió en un sis­tema
+Unix deter­mi­nat. Que siguin vàlids no sig­ni­fica que esti­guin ins­tal·lats, si es volen uti­lit­zar cal que
+prè­vi­a­ment ens asse­gu­rem que estan ins­tal·lats al sis­tema.
+
+Exem­ple de con­tin­gut del fit­xer /etc/shells d'un sis­tema Debian
+
+# /etc/shells: valid login shells
+/bin/csh
+/bin/sh
+/usr/bin/es
+/usr/bin/ksh
+/bin/ksh
+/usr/bin/rc
+/usr/bin/tcsh
+/bin/tcsh
+/usr/bin/esh
+/bin/dash
+/bin/bash
+/bin/rbash
+
+El shell que s’exe­cuta per defecte quan un usu­ari ini­cia ses­sió queda defi­nit en el fit­xer
+/etc/passwd, en el dar­rer camp de la línia cor­res­po­nent a l’usu­ari.
+
+Exem­ple de línia d'un fit­xer /etc/passwd
+La següent és una línia d’una usu­à­ria ano­me­nada “mia” del fit­xer /etc/passwd. En el dar­‐
+rer camp hi ha escrit /bin/bash, cosa que indica el shell per defecte de la usu­à­ria:
+mia:x:1011:1000:Mia Maya:/home/mia:/bin/bash
+
+Nor­mal­ment, l’admi­nis­tra­dor del sis­tema és l’encar­re­gat de fixar el shell d’inici de ses­sió dels usu­‐
+a­ris. En alguns entorns, està habi­li­tat l’ús d’ordres com chsh per per­me­tre als usu­a­ris can­viar el
+seu shell per defecte d’inici de ses­sió.
+
+Exem­ple d'uti­lit­za­ció de l'ordre /usr/bin/chsh
+Ima­gi­nem que la usu­à­ria “mia” està tre­ba­llant en un entorn en què se li per­met fer el canvi del
+seu shell d’inici i que el shell /bin/tcsh està ins­tal·lat al sis­tema. La usu­à­ria té com a shell
+d’inici el bash i té la neces­si­tat de can­viar-lo pel tcsh. Per això exe­cuta l’ordre següent:
+chsh -s /bin/tcsh
+
+El resul­tat de l’ordre ante­rior és un canvi en la línia del fit­xer /etc/passwd cor­res­po­nent a
+la usu­à­ria “mia”. En el dar­rer camp ara hi haurà escrit /bin/tcsh i a par­tir d’aquell
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+12/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+moment totes les ses­si­ons noves exe­cu­ta­ran aquest shell per defecte.
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+mia:x:1011:1000:Mia Maya:/home/mia:/bin/tcsh
+
+Si hem ini­ciat ses­sió com a usu­a­ris amb un shell deter­mi­nat, en la mateixa ses­sió podem arren­car
+un nou shell –al qual ano­me­nem subs­hell o shell fill–, que pot ser del mateix tipus o d’un de dife­‐
+rent dis­po­ni­ble en el sis­tema. Per ini­ciar un subs­hell sen­zi­lla­ment hem d’escriure el nom del pro­‐
+grama (sh, bash, csh, ksh, etc.) a la línia d’ordres i pré­mer la tecla de retorn. Si hem can­viat de
+shell, en gene­ral, apa­rei­xerà un indi­ca­dor de línia d’ordres dife­rent, ja que cada shell té una apa­‐
+rença dife­rent. Podem fina­lit­zar l’exe­cu­ció del subs­hell i retor­nar al shell pare escri­vint l’ordre exit.
+
+1.3. El shell Bash
+
+El shell Bash és l’intèr­pret d’ordres pre­de­ter­mi­nat de gai­rebé totes les dis­tri­bu­‐
+ci­ons GNU/Linux, així com de Mac OS X, i pot exe­cu­tar-se en la majo­ria dels
+sis­te­mes ope­ra­tius tipus Unix. També s’ha por­tat a Micro­soft Win­dows per al
+pro­jecte Cygwin.
+
+El nom Bash
+És un acrò­nim de Bourne-Again Shell (“un altre shell
+Bourne”), fent un joc de parau­les (born-again sig­ni­fica
+“renai­xe­ment”) sobre el shell Bourne (sh), que va ser un
+dels pri­mers intèr­prets impor­tants d’Unix.
+
+El Bash és un intèr­pret d’ordres com­pa­ti­ble amb el shell Bourne (sh), que incor­pora carac­te­rís­ti­‐
+ques útils del shell Korn (ksh) i del shell C (csh), amb l’objec­tiu de com­plir amb l’estàn­dard
+POSIX. Bash ofe­reix millo­res fun­ci­o­nals sobre sh tant per a la pro­gra­ma­ció com per a l’ús interac­‐
+tiu i s’ha con­ver­tit en l’estàn­dard de facto per a la pro­gra­ma­ció de guions de shell.
+
+Com que el shell Bash (bash) és com­pa­ti­ble amb el shell Bourne (sh), les
+ordres i els pro­gra­mes escrits per a sh poden ser exe­cu­tats amb bash sense cap
+modi­fi­ca­ció, però el con­trari no sem­pre és cert.
+
+POSIX
+És l’acrò­nim de por­ta­ble ope­ra­ting sys­tem inter­face. La X
+prové d’Unix, com a sím­bol d’iden­ti­tat de l’API. Una tra­‐
+duc­ció apro­xi­mada de l’acrò­nim podria ser “inter­fí­cie de
+sis­tema ope­ra­tiu por­tà­til basat en Unix”.
+
+Queda fora de l’abast d’aquesta uni­tat fer un estudi de totes les carac­te­rís­ti­ques del shell Bash i úni­‐
+ca­ment ens cen­tra­rem en aque­lles fun­ci­o­na­li­tats que són neces­sà­ries per poder abor­dar cor­rec­ta­‐
+ment la pro­gra­ma­ció de shell scripts i l’auto­ma­tit­za­ció de tas­ques del sis­tema.
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+13/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+1.3.1. Obrir una ses­sió amb Bash
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+Quan arrenca, el sis­tema pre­senta als usu­a­ris una inter­fí­cie deter­mi­nada que pot ser de text o grà­‐
+fica, depe­nent dels sis­te­mes ope­ra­tius o de com esti­gui con­fi­gu­rat el mode d’arren­cada.
+La interac­ció amb Bash es fa a tra­vés d’un emu­la­dor de ter­mi­nal. Si hem ini­ciat ses­sió al sis­tema en
+mode con­sola (text), una vegada vali­dats obtin­drem l’accés directe a un shell. Si hem ini­ciat ses­sió
+en mode grà­fic, hau­rem d’exe­cu­tar algun dels pro­gra­mes d’emu­la­ció de ter­mi­nal dis­po­ni­bles. La
+majo­ria de sis­te­mes Unix dis­po­sen d’una apli­ca­ció de ter­mi­nal acces­si­ble per alguna de les opci­ons
+del menú prin­ci­pal, per exem­ple, a la dis­tri­bu­ció de Linux Debian acce­dim a un ter­mi­nal des
+d’Apli­ca­ci­ons > Acces­so­ris > Ter­mi­nal.
+Els usu­a­ris de Mac OS X podeu acce­dir a un shell Bash
+via Fin­der > Apli­ca­ci­ons > Uti­li­tats > Ter­mi­nal.
+
+Un altre cas d’obten­ció d’un intèr­pret d’ordres interac­tiu és l’accés remot a la màquina, tant per
+qual­se­vol de les pos­si­bi­li­tats de text (Tel­net, rlo­gin, SSH) com per les grà­fi­ques (per exem­ple, amb
+emu­la­dors X Win­dow).
+Sigui quin sigui el mode d’accés, en ini­ciar ses­sió el sis­tema genera un shell per a nosal­tres que
+farà d’intèr­pret de les ordres que exe­cu­tem en aque­lla ses­sió. Per a això el shell fa el següent:
+Mos­tra per pan­ta­lla l’indi­ca­dor de la línia d’ordres (el prompt) asse­nya­lant que està llest per
+accep­tar ordres.
+Quan l’usu­ari intro­du­eix una ordre, el shell la inter­preta (busca les ordres, fa l’expan­sió de
+noms de fit­xers, subs­ti­tu­eix els valors de vari­a­bles per vari­a­bles refe­ren­ci­a­des, etc.).
+Si troba algun error mos­tra a l’usu­ari un mis­satge d’error.
+Si l’ordre està ben escrita, ales­ho­res loca­litza el pro­grama que cal exe­cu­tar i demana al sis­tema
+ope­ra­tiu que l’exe­cuti, pas­sant-li a ell el con­trol.
+Quan fina­litza l’exe­cu­ció del pro­grama, el con­trol retorna al shell, que torna a mos­trar el
+prompt espe­rant una nova ordre.
+Vegeu més infor­ma­ció sobre el shell per defecte a l’apar­tat
+“Shells del sis­tema ope­ra­tiu Unix i deri­vats” d’aquesta
+uni­tat.
+
+Des­prés d’ini­ciar ses­sió, podem com­pro­var quin és el shell que tenim esta­blert per defecte i amb el
+que estem tre­ba­llant exe­cu­tant l’ordre següent:
+echo $SHELL
+
+1.3.2. Inter­pre­ta­ció d'ordres
+La fun­ció prin­ci­pal del shell és inter­pre­tar ordres, ja sigui les ordres escri­tes de manera interac­tiva a
+la inter­fí­cie de la línia d’ordres que pro­por­ci­ona, o les ordres escri­tes en un fit­xer de text (guió de
+shell).
+Les ordres que escri­vim, ja sigui en l’indi­ca­dor de la línia d’ordres del shell o en un pro­grama de
+shell, tenen el for­mat següent:
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+14/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+nom_ordre [-opcions]
+[arguments] DE
+<return>
+ADMINISTRACIÓ
+SISTEMES OPERATIUS
+
+On:
+nom_or­dre: és el nom de l’ordre que volem exe­cu­tar
+opci­ons: les ordres poden o no por­tar opci­ons. Nor­mal­ment les opci­ons s’escri­uen amb un
+guió davant.
+argu­ments: depe­nent de l’ordre, es poden posar argu­ments que mol­tes vega­des repre­sen­ten
+una cadena de caràc­ters, el nom d’un fit­xer o direc­tori.
+
+El shell inter­preta sem­pre l’espai en blanc com a sepa­ra­dor d’ordres, opci­ons o
+argu­ments. Si no posem els espais cor­rec­ta­ment, obtin­drem un mis­satge d’error.
+
+Exem­ple d'exe­cu­ció d'ordres
+És pos­si­ble que una mateixa ordre accepti dife­rents modes d’exe­cu­ció, a soles, amb opci­ons,
+amb argu­ments. Per exem­ple l’ordre ls:
+ls
+ls -l
+ls /etc/shells
+ls -l /etc/shells
+
+L’ordre següent dóna error per­què no hem posat l’espai reque­rit per sepa­rar l’opció i l’argu­‐
+ment:
+ls -l/etc/shells
+
+1.3.3. Expan­sió de noms de fit­xers
+El shell ens pro­por­ci­ona una carac­te­rís­tica que s’ano­mena gene­ra­ció de noms de fit­xers o expan­‐
+sió de noms de fit­xers,que ens estal­via temps a l’hora de tecle­jar els noms dels fit­xers amb els
+quals ope­ren les ordres.
+
+La gene­ra­ció de noms de fit­xers per­met uti­lit­zar uns caràc­ters espe­ci­als per
+espe­ci­fi­car grups de noms de fit­xers.
+
+Es poden tro­bar noms de fit­xers o direc­to­ris que com­plei­xen un patró deter­mi­nat, per exem­ple, tots
+els noms que aca­ben en .c, o tots els que comen­cen per test, o tots els que tenen tres caràc­ters. Mit­‐
+jan­çant l’ús de les expres­si­ons regu­lars, podem refe­rir-nos als noms dels fit­xers que com­plei­xen el
+patró deter­mi­nat. El shell expan­deix el patró cor­res­po­nent als noms de fit­xers abans d’exe­cu­tar
+l’ordre. La taula 1.2 mos­tra les expres­si­ons regu­lars uti­lit­za­des per a la gene­ra­ció de noms de fit­‐
+xers.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+15/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+Expres­si­ons regu­lars
+En infor­mà­tica, una expres­sió regu­lar és una repre­sen­ta­ció, segons unes regles sin­tàc­ti­ques
+d’un llen­guatge for­mal, d’una por­ció de text genè­ric a bus­car dins d’un altre text, com per
+exem­ple uns caràc­ters, parau­les o patrons de text con­crets. El text genè­ric de l’expres­sió
+regu­lar pot repre­sen­tar patrons amb deter­mi­nats caràc­ters que tenen un sig­ni­fi­cat espe­cial,
+com ara el caràc­ter inter­ro­gant, ?,per repre­sen­tar un caràc­ter qual­se­vol; el caràc­ter comodí, *,
+per repre­sen­tar un nom­bre qual­se­vol de caràc­ters, etc.
+
+Taula: 1.2. Expres­si­ons regu­lars usa­des en la gene­ra­ció de noms de fit­xers
+Expres­sió
+
+Des­crip­ció
+
+?
+
+Coin­ci­dèn­cia amb qual­se­vol caràc­ter sim­ple, excepte el punt a l’inici del nom.
+
+*
+
+Coin­ci­dèn­cia amb zero o més caràc­ters (excepte el punt ini­cial).
+
+[]
+
+Coin­ci­dèn­cia amb qual­se­vol dels caràc­ters tan­cats.
+
+[!]
+
+Coin­ci­dèn­cia amb qual­se­vol dels caràc­ters no tan­cats.
+
+[-]
+
+Coin­ci­dèn­cia amb qual­se­vol dels caràc­ters del rang.
+
+Les expres­si­ons regu­lars de gene­ra­ció de noms de fit­xers no gene­ren mai noms de fit­xers que
+comen­cen per punt, el punt sem­pre s’ha d’indi­car explí­ci­ta­ment.
+
+Exem­ple de gene­ra­ció de noms de fit­xers amb expres­si­ons regu­lars
+Situeu-vos en el direc­tori /usr/bin i llis­teu els noms de fit­xers i direc­to­ris que comen­cin per c:
+ls c*
+
+Els que comen­cin per la lle­tra y o z:
+ls [yz]*
+
+Els que aca­bin en .sh:
+ls *.sh
+
+Els que comen­cin per r i aca­bin en e:
+ls r*e
+
+Els que comen­cin per alguna lle­tra com­presa entre la a i la d:
+ls [a-d]*
+
+Tots aquells fit­xers el nom dels quals tin­gui qua­tre lle­tres:
+ls ????
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+16/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+1.3.4. Vari­a­bles del shell
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+Al shell, una vari­a­ble és un nom que repre­senta un valor. La sin­taxi per defi­nir i assig­nar un valor a
+una vari­a­ble és:
+nom_variable=valor
+
+Fixeu-vos que no hi ha cap espai abans ni des­prés del signe igual. Si se’n posa algun obtin­drem un
+error.
+Els següents són exem­ples vàlids de defi­ni­ció de vari­a­bles:
+NOM=Marc
+COGNOMS="Ros Roig"
+EDAT=31
+
+El valor assig­nat a la vari­a­ble COGNOMS l’hem tan­cat entre come­tes dobles per­què el shell no
+inter­preti l’espai que hi ha entre els dos cognoms. Per evi­tar la pos­si­bi­li­tat de come­tre errors,
+podem optar per posar el valor sem­pre entre come­tes dobles:
+nom_variable="valor"
+
+El valor de la vari­a­ble sem­pre el podem can­viar assig­nant-li un altre valor. Per exem­ple:
+NOM=Mia
+
+El valor asso­ciat a una vari­a­ble pot ser uti­lit­zat mit­jan­çant el nom de la vari­a­ble pre­ce­dit amb el
+sím­bol dòlar: $nom_variable. Aquest meca­nisme es diu subs­ti­tu­ció de vari­a­bles.
+
+El shell rea­litza la subs­ti­tu­ció de vari­a­bles a qual­se­vol línia d’ordres que con­‐
+tin­gui un sím­bol $ seguit d’un nom de vari­a­ble vàlid.
+
+Podem visu­a­lit­zar el valor d’una vari­a­ble defi­nida amb l’ordre echo i uti­lit­zant el meca­nisme de
+subs­ti­tu­ció de vari­a­bles:
+echo $nom_variable
+
+Per exem­ple:
+echo $COGNOMS
+
+Des­prés d’exe­cu­tar l’ordre ante­rior, el valor asso­ciat a la vari­a­ble ano­me­nada COGNOMS es mos­‐
+tra per pan­ta­lla.
+En la subs­ti­tu­ció de vari­a­bles es pot fer ús de claus per deli­mi­tar el nom de la vari­a­ble:
+${nom_variable}. La uti­lit­za­ció de claus ens per­met, per exem­ple, fer la subs­ti­tu­ció de la vari­‐
+a­ble seguida d’un text. Per exem­ple:
+PREFIX=extra
+echo ${PREFIX}ordinari
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+17/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+L’ordre ante­rior mos­tra per pan­ta­lla la paraula “extra­or­di­nari”. Fent ús de la mateixa vari­a­ble PRE­‐
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+FIX podem escriure l’ordre següent:
+echo “Mots que comencen per $PREFIX: ${PREFIX}ordinari, ${PREFIX}polar, ${PRE
+
+L’ordre ante­rior mos­tra per pan­ta­lla la frase “Mots que comen­cen per extra: extra­or­di­nari, extra­po­‐
+lar, extra­murs, etc.”.
+Per con­ven­ció, els noms de les vari­a­bles s’escri­uen en majús­cu­les, però es poden posar en minús­‐
+cu­les. Els noms de les vari­a­bles han de comen­çar obli­ga­tò­ri­a­ment per caràc­ter alfa­bè­tic (a-z, AZ) i poden con­te­nir caràc­ters alfa­bè­tics, numè­rics i subrat­llats. No hi ha res­tric­ci­ons res­pecte al
+nom­bre de caràc­ters que pot tenir el nom d’una vari­a­ble.
+Les vari­a­bles poden ser de dos tipus, vari­a­bles locals o vari­a­bles d’entorn:
+Vari­a­bles locals: només són visi­bles pel shell en el qual estem tre­ba­llant, no són visi­bles per
+cap shell fill.
+Vari­a­bles d’entorn: són visi­bles tant pel shell pare com pels shells fills. En ser creat, el shell
+fill “hereta” les vari­a­bles d’entorn del pare (en rep una còpia). El shell fill pot can­viar les vari­‐
+a­bles here­ta­des del shell pare, però, com que són una còpia, els can­vis fets en el fill no afec­ten
+el pare.
+
+Una vari­a­ble defi­nida en un pro­cés fill, ja sigui local o d’entorn, no és visi­ble
+pel seu pro­cés pare.
+
+La manera de fer una vari­a­ble d’entorn és mit­jan­çant l’ordre export:
+export NOM_VAR
+
+L’assig­na­ció i expor­ta­ció es pot fer en un sol pas:
+export NOM_VAR=valor
+
+Exem­ple de mani­pu­la­ció de vari­a­bles locals i d'entorn
+Exe­cu­teu de manera seqüen­cial les línies d’ordres següents:
+x=11
+#
+echo $x #
+bash
+#
+echo $x #
+exit
+#
+export x#
+bash
+#
+echo $x #
+x=12
+#
+exit
+#
+echo $x #
+
+Definim una variable x amb valor 11
+Mostrem el valor de x
+Obrim un shell fill
+El shell fill no coneix el valor de x
+Sortim del shell fill i retornem al pare
+Exportem la variable x a l'entorn
+Obrim un shell fill
+Ara el shell fill sí coneix el valor de x
+Modifiquem en el shell fill el valor de x
+Tornem al shell pare
+El valor de x segueix sent 11
+
+Hi ha diver­ses ordres rela­ci­o­na­des amb les vari­a­bles:
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+18/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Ordre set: per­met veure totes les vari­a­bles (locals i d’entorn) defi­ni­des en una ses­sió.
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+Ordre env: per­met veure les vari­a­bles d’entorn defi­ni­des en una ses­sió.
+
+Ordre unset nom_variable: eli­mina la vari­a­ble i el valor asso­ciat a la vari­a­ble.
+
+En qual­se­vol ses­sió de shell Bash hi ha pre­sents una sèrie de vari­a­bles
+d’entorn pre­de­fi­ni­des pel sis­tema que ens poden resul­tar de molta uti­li­tat en la
+pro­gra­ma­ció de guions de shell, ja que guar­den infor­ma­ció genè­rica de l’entorn
+dels usu­a­ris.
+
+La taula 1.3 mos­tra el nom i la des­crip­ció d’algu­nes d’aques­tes vari­a­bles.
+Loca­lit­za­ció
+Loca­lit­za­ció es refe­reix al con­junt de con­ven­ci­ons que es
+fan ser­vir en una zona geo­grà­fica o cul­tu­ral deter­mi­nada,
+com ara el for­mat de la data i l’hora, el nom de la moneda,
+el sepa­ra­dor per a dese­nes i cen­te­nes, etc. L’ordre locale
+mos­tra infor­ma­ció sobre el valor de les vari­a­bles de loca­‐
+lit­za­ció del sis­tema.
+
+Exem­ple d'ús de vari­a­bles d'entorn pre­de­fi­ni­des
+Fent ús de la subs­ti­tu­ció de vari­a­bles i uti­lit­zant vari­a­bles d’entorn pre­de­fi­ni­des escri­viu una
+línia d’ordres que en exe­cu­tar-se mos­tri per pan­ta­lla el text:
+“Sóc nom_u­su­ari i el meu direc­tori de tre­ball és direc­tori”.
+Els valors de nom_u­su­ari i direc­tori s’han d’obte­nir de les vari­a­bles ade­qua­des i pre­de­fi­ni­des
+pel sis­tema.
+echo "Sóc $USER i el meu directori de treball és $HOME"
+
+Feu el mateix, però ara heu de mos­trar:
+“Tre­ba­llo amb un sis­tema sis­te­ma_o­pe­ra­tiu i un shell­nom_s­hell”
+echo "Treballo amb un sistema $OSTYPE i un shell $SHELL"
+
+Taula: 1.3. Algu­nes de les vari­a­bles pre­de­fi­ni­des del shell Bash
+Nom vari­a­ble
+
+Des­crip­ció
+
+BASH
+
+Camí del pro­grama Bash que s’està exe­cu­tant.
+
+BASH_­VER­‐
+SION
+
+Ver­sió del Bash que uti­lit­zem.
+
+COLUMNS
+
+Nom­bre de colum­nes a la pan­ta­lla.
+
+HIST­FILE
+
+Fit­xer on es guarda l’his­tò­ric de les ordres exe­cu­ta­des per l’usu­ari.
+
+HOME
+
+Direc­tori d’inici de l’usu­ari.
+
+HOST­NAME
+
+Nom de l’ordi­na­dor.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+19/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+LANG
+
+Usada per deter­mi­nar el valor de loca­lit­za­ció per defecte per qual­se­vol cate­go­ria no espe­ci­fi­cada amb
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+la cor­res­po­nent vari­a­ble LC_ (LC_­NU­ME­RIC, LC_­TIME, LC_­MO­NE­TARY, etc.).
+
+LC_ALL
+
+Aquesta vari­a­ble sobre­es­criu el valor de LANG i de qual­se­vol vari­a­ble LC_ que espe­ci­fi­qui una cate­‐
+go­ria de loca­lit­za­ció.
+
+LOG­NAME
+
+Nom de l’usu­ari con­nec­tat.
+
+MACHTYPE
+
+Arqui­tec­tura de l’ordi­na­dor.
+
+OSTYPE
+
+Tipus de sis­tema ope­ra­tiu que estem uti­lit­zant.
+
+PATH
+
+Llista de direc­to­ris on el shell ha de loca­lit­zar els pro­gra­mes quan els escri­vim sense indi­car el camí
+on es tro­ben.
+
+PPID
+
+Iden­ti­fi­ca­dor del pro­cés pare.
+
+PS1
+
+Indi­ca­dor de la línia d’ordres pri­mari.
+
+PS2
+
+Indi­ca­dor de la línia d’ordres secun­dari.
+
+PWD
+
+Camí del direc­tori actual, és a dir, el direc­tori on estem situ­ats.
+
+RAN­DOM
+
+Número ale­a­tori.
+
+SECONDS
+
+Temps en segons des que s’ha ini­ciat el shell.
+
+UID
+
+Iden­ti­fi­ca­dor de l’usu­ari actual.
+
+1.3.5. Subs­ti­tu­ció d'ordres
+
+La subs­ti­tu­ció d’ordres s’uti­litza per reem­pla­çar la sor­tida de l’exe­cu­ció d’una
+ordre dins de la mateixa línia d’ordres.
+
+Es pot fer amb la sin­taxi següent:
+$(ordre)
+
+O bé tan­cant l’ordre entre accents greus: `ordre`.
+Les dues mane­res són vàli­des però si estem escri­vint un shell script és millor triar-ne una i fer ser­‐
+vir la mateixa manera al llarg de tot el pro­grama.
+En els exem­ples d’aquesta uni­tat uti­lit­za­rem $(ordre) i
+no `ordre` per fer la subs­ti­tu­ció d’ordres.
+
+De la mateixa manera que en la subs­ti­tu­ció de vari­a­bles, la subs­ti­tu­ció d’ordres es fa sem­pre abans
+d’exe­cu­tar la línia d’ordres. Quan el shell troba a la línia d’ordres un $ seguit d’un parèn­tesi obert,
+exe­cuta tot el que troba fins a arri­bar al parèn­tesi tan­cat. El resul­tat el posa a la línia d’ordres en el
+lloc on hi havia l’ordre que subs­ti­tuïa.
+
+Exem­ple de subs­ti­tu­ció d'ordres
+Fent ús de la subs­ti­tu­ció d’ordres escri­viu una línia d’ordres que en exe­cu­tar-la mos­tri per
+pan­ta­lla el text: “La data del sis­tema és: data”. El valor de data s’ha d’obte­nir del resul­tat
+d’exe­cu­tar l’ordre ade­quada.
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+20/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+echo "LaADMINISTRACIÓ
+data del sistema és: DE
+$(date)"
+SISTEMES
+
+OPERATIUS
+
+També es podria haver fet així: echo “La data del sistema és: `date`”.
+
+La subs­ti­tu­ció d’ordres és un meca­nisme molt uti­lit­zat en la pro­gra­ma­ció de guions de shell. Mol­tes
+vega­des es fa ser­vir en l’assig­na­ció de valors a vari­a­bles. Per exem­ple:
+L’ordre date admet diver­sos modi­fi­ca­dors de for­mat de
+sor­tida que s’indi­quen amb +%. Per exem­ple, date +%x
+indica la data del sis­tema amb for­mat dd/mm/aa.
+
+HORA=$(date +%H)
+
+Si la sor­tida de l’ordre que subs­ti­tuïm conté salts de línia, el shell els subs­ti­tuirà per espais en
+blanc. Per exem­ple, exe­cu­teu l’ordre següent:
+seq 10
+
+L’ordre seq és uti­lit­zada per gene­rar seqüèn­cies de núme­‐
+ros, vegeu la seva sin­taxi amb man seq.
+
+L’ordre ante­rior mos­tra per pan­ta­lla els núme­ros de l’1 al 10 sepa­rats per salts de línia. Ara poseu la
+mateixa ordre en una subs­ti­tu­ció d’ordres, per exem­ple:
+echo $(seq 10)
+
+El resul­tat de l’ordre ante­rior és la llista de núme­ros sepa­rats per espais.
+
+Exem­ple d'ús de vari­a­bles i subs­ti­tu­ció d'ordres
+Assig­neu a una vari­a­ble la llista de nom­bres parells que hi ha entre el 0 i el 20 (inclo­sos)
+sepa­rats per espais:
+
+PARELLS=$(seq 0 2 20)
+
+1.3.6. Expan­sió arit­mè­tica
+
+El meca­nisme d’expan­sió arit­mè­tica del Bash per­met l’ava­lu­a­ció d’una expres­‐
+sió arit­mè­tica i la subs­ti­tu­ció del resul­tat.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+21/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+El for­mat per fer l’expan­sió arit­mè­tica és:
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+$((expressió_aritmètica))
+
+No con­fon­gueu el meca­nisme de subs­ti­tu­ció d’ordres,
+$(ordre), amb el d’expan­sió arit­mè­tica, $((expres­sió)).
+
+L’ava­lu­a­ció d’expres­si­ons arit­mè­ti­ques només admet nom­bres sen­cers. Els ope­ra­dors adme­sos són
+gai­rebé els matei­xos que en el llen­guatge de pro­gra­ma­ció C. La taula 1.4 mos­tra la llista d’ope­ra­‐
+dors exis­tents (no incloem els que ope­ren amb bits) en ordre decrei­xent de pre­ce­dèn­cia. Podem
+uti­lit­zar parèn­te­sis per alte­rar l’ordre de pre­ce­dèn­cia dels ope­ra­dors.
+Taula: 1.4. Ope­ra­dors arit­mè­tics
+Ope­ra­dor
+
+Des­crip­ció
+
+VAR++, VAR–
+
+Postin­cre­ment i post­de­cre­ment de la vari­a­ble
+
+++VAR, –VAR
+
+Prein­cre­ment i pre­de­cre­ment
+
+-, +
+
+Menys i més una­ris
+
+!
+
+Nega­ció lògica
+
+**
+
+Potèn­cia
+
+*, /, %
+
+Mul­ti­pli­ca­ció, divi­sió i residu
+
++, -
+
+Suma i resta
+
+⇐, >=, <, >
+
+Ope­ra­dors de com­pa­ra­ció
+
+==, !=
+
+Igual­tat i desi­gual­tat
+
+&&
+
+AND lògic
+
+||
+
+OR lògic
+
+expr ? expr : expr
+
+Ava­lu­a­ció con­di­ci­o­nal
+
+=, *=, /=, %=, +=, -= Assig­na­ci­ons
+,
+
+Sepa­ra­dor d’expres­si­ons
+
+En les expres­si­ons s’adme­ten vari­a­bles del shell com a ope­rands i podem uti­lit­zar-les fent l’expan­‐
+sió de la vari­a­ble $NOM_­VAR, o bé només amb el seu nom, NOM_­VAR. Per exem­ple, dona­des
+dues vari­a­bles amb els valors següents:
+X=2
+Y=3
+
+L’expres­sió següent:
+Z=$((X+Y))
+
+També la podem escriure així:
+Z=$(($X+$Y))
+
+El meca­nisme d’expan­sió arit­mè­tica ens per­met rea­lit­zar ope­ra­ci­ons i subs­ti­tuir el resul­tat en una
+altra ordre, per exem­ple:
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+22/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+echo “El resultat
+de sumar $X i $Y
+$((X+Y))”OPERATIUS
+ADMINISTRACIÓ
+DEés:
+SISTEMES
+
+En l’exem­ple ante­rior fem ser­vir l’ordre echo i en l’argu­ment uti­lit­zem l’expan­sió arit­mè­tica direc­‐
+ta­ment per visu­a­lit­zar el resul­tat de l’ope­ra­ció X+Y.
+
+1.3.7. Trac­ta­ment dels caràc­ters espe­ci­als
+Els caràc­ters espe­ci­als són aquells que tenen algun sig­ni­fi­cat con­cret per al shell, per exem­ple:
+El caràc­ter espai indica sepa­ra­ció d’ordres, opci­ons o argu­ments.
+El caràc­ter salt de línia indica final d’ordre.
+El caràc­ter $ davant d’un nom indica refe­ren­ciar el valor d’una vari­a­ble amb aquest nom.
+El caràc­ter * és uti­lit­zat com a expres­sió regu­lar en la gene­ra­ció de noms de fit­xers.
+Quan no volem que el shell inter­preti aquests caràc­ters de manera espe­cial sinó com a caràc­ters
+nor­mals, podem anul·lar el seu sig­ni­fi­cat de les mane­res següents:
+Pre­ce­dint el caràc­ter del sím­bol\. Aquesta tèc­nica anul·la el sig­ni­fi­cat espe­cial del caràc­ter que
+va dar­rera.
+Amb come­tes dobles, “ ”. Aquesta tèc­nica anul·la el sig­ni­fi­cat de tots els caràc­ters espe­ci­als
+que esti­guin dins les come­tes dobles excepte el caràc­ter espe­cial dòlar, $, la con­tra­barra, \,
+l’accent greu, `, i les come­tes dobles, “ ”.
+Amb come­tes sim­ples,’ '. Aquesta tèc­nica anul·la el sig­ni­fi­cat de tots els caràc­ters espe­ci­als
+que esti­guin dins les come­tes sim­ples.
+
+Exem­ple d'anul·lació del sig­ni­fi­cat dels caràc­ters espe­ci­als
+Escri­viu una ordre que mos­tri una frase com la següent: Estic lle­gint el lli­bre “Cór­rer o
+morir”. El títol “Cór­rer o morir” ha d’apa­rèi­xer entre come­tes dobles.
+echo Estic llegint el llibre \"Córrer o morir\".
+
+Es pot acon­se­guir el mateix amb les come­tes sim­ples:
+echo 'Estic llegint el llibre "Córrer o morir".'
+
+Escri­viu una ordre que mos­tri la frase següent: El con­tin­gut de $USER és: nom_u­su­ari. S’ha
+de subs­ti­tuir nom_u­su­ari pel valor de la vari­a­ble USER.
+echo El contingut de \$USER és $USER.
+
+1.3.8. Redi­rec­ció de l'entrada i la sor­tida
+A Unix els dis­po­si­tius d’entrada i sor­tida (E/S) i els fit­xers es trac­ten de la mateixa manera i el shell
+els tracta a tots com a fit­xers. Tots els pro­gra­mes exe­cu­tats mit­jan­çant un shell inclo­uen tres fit­xers
+pre­de­fi­nits, espe­ci­fi­cats pels des­crip­tors de fit­xers (file hand­les) cor­res­po­nents. Per defecte, aquests
+fit­xers són els següents:
+Entrada estàn­dard (stan­dard input). Nor­mal­ment està assig­nada al teclat. Uti­litza el des­crip­tor
+número 0.
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+23/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Sor­tida estàn­dard (stan­dard out­put). Nor­mal­ment està assig­nada a la pan­ta­lla. Uti­litza el des­‐
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+crip­tor 1.
+Sor­tida estàn­dard d’errors (stan­dard error). Nor­mal­ment, està assig­nada a la pan­ta­lla. Uti­litza
+el des­crip­tor 2.
+Això ens indica que, per defecte, qual­se­vol pro­grama exe­cu­tat des del shell tin­drà l’entrada asso­ci­‐
+ada al teclat, la seva sor­tida a la pan­ta­lla i, si es pro­du­ei­xen errors també els envi­arà a la pan­ta­lla.
+
+Una carac­te­rís­tica que ens pro­por­ci­ona el shell és poder redi­ri­gir l’entrada o la
+sor­tida estàn­dards d’una ordre, és a dir, ens per­met fer que una ordre rebi la
+seva entrada o enviï la seva sor­tida des de o cap a altres fit­xers o dis­po­si­tius.
+
+De manera que:
+La redi­rec­ció d’entrada per­met que les ordres aga­fin les dades d’un fit­xer enlloc de des del
+teclat.
+La redi­rec­ció de sor­tida ens per­met enviar la sor­tida d’una ordre a un fit­xer enlloc de a la
+pan­ta­lla.
+La redi­rec­ció de la sor­tida d’errors ens per­met enviar la sor­tida d’errors d’una ordre a un fit­‐
+xer enlloc de a la pan­ta­lla.
+La taula 1.5 mos­tra els caràc­ters uti­lit­zats per redi­ri­gir l’entrada i la sor­tida de les ordres.
+Taula: 1.5. Redi­rec­ci­o­na­ment d’entrada i sor­tida
+Caràc­‐
+ter
+
+Des­crip­ció
+
+Exem­ple
+
+<
+
+Redi­rec­ció d’entrada.
+
+write usu­ari < “Hola”
+
+>
+
+Redi­rec­ció de sor­tida. Si el fit­xer no exis­teix el crea i si ja exis­teix en sobre­es­criu el
+con­tin­gut.
+
+date > regis­tre.​log
+
+»
+
+Redi­rec­ció de sor­tida. Si el fit­xer no exis­teix el crea i si ja exis­teix l’afe­geix a con­ti­‐
+nu­a­ció.
+
+who » regis­tre.​log
+
+2>
+
+Redi­rec­ció de sor­tida d’errors. Si el fit­xer no exis­teix el crea i si ja exis­teix en
+sobre­es­criu el con­tin­gut.
+
+ls /tmp/kk 2> regis­tre.​
+log
+
+2»
+
+Redi­rec­ció de sor­tida d’errors. Si el fit­xer no exis­teix el crea i si ja exis­teix l’afe­‐
+geix a con­ti­nu­a­ció.
+
+ls /tmp/kk 2»regis­tre.​
+log
+
+2>&1
+
+Redi­rec­ció de la sor­tida d’errors a la sor­tida estàn­dard.
+
+ls /tmp/kk 2>&1
+
+1>&2
+
+Redi­rec­ció de la sor­tida estàn­dard a la sor­tida d’errors.
+
+ls /tmp/kk 1>&2
+
+>&
+
+Redi­rec­ció de sor­tida i de sor­tida d’errors a un fit­xer.
+
+ls /tmp/kk >& regis­‐
+tre.​log
+
+Si volem que l’exe­cu­ció d’una ordre no generi acti­vi­tat per pan­ta­lla (exe­cu­ció silen­ci­osa), hem de
+redi­ri­gir totes les seves sor­ti­des a /dev/null. Per exem­ple:
+ls /tmp/kk >& /dev/null
+
+Si volem redi­ri­gir la sor­tida estàn­dard i la sor­tida d’errors a un fit­xer amb la doble redi­rec­ció, per
+tal que si el fit­xer no exis­teix el creï i que si ja exis­teix afe­geixi les dues sor­ti­des, podem fer-ho
+així:
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+24/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ls /tmp/kk >> registre.log
+2>> registre.log
+ADMINISTRACIÓ
+DE SISTEMES OPERATIUS
+
+1.3.9. Cano­na­des o 'pipes'
+
+El shell per­met enlla­çar la sor­tida d’una ordre com a entrada d’una altra ordre
+mit­jan­çant el que ano­me­nem cano­na­des o pipes.
+
+La sin­taxi és la següent:
+ordre1 | ordre2
+
+La sor­tida de l’ordre 1 s’uti­litza com a entrada de l’ordre 2. El sím­bol | s’ano­mena pipe (“cano­‐
+nada” en anglès). Es poden posar espais entre la cano­nada i les ordres per fer més lle­gi­ble la línia
+d’ordres, però no és obli­ga­tori, els espais són opci­o­nals.
+Per exem­ple, exe­cu­tem una ordre echo per mos­trar per pan­ta­lla una línia de text:
+echo "Alba:Gomez:08004:BCN"
+
+L’ordre ante­rior mos­tra per pan­ta­lla una serie de dades sepa­ra­des per dos punts així:
+“Nom:Cognoms:CP:Ciu­tat”. Si d’aquesta sor­tida només volem pren­dre el ter­cer camp (el de codi
+postal), la podem redi­ri­gir amb una cano­nada cap a l’ordre cut per­què selec­ci­oni úni­ca­ment el camp
+que ens interessa de la manera següent:
+echo "Alba:Gomez:08004:BCN" | cut -d: -f3
+
+A la figura 1.6 podem veure aquest exem­ple de manera grà­fica. La sor­tida de l’ordre echo passa per
+la cano­nada i la rep com a entrada l’ordre cut, la qual la pro­cessa i mos­tra per pan­ta­lla la sor­tida
+pro­ces­sada.
+Figura 1.6. Fun­ci­o­na­ment de les cano­na­des
+
+Veiem un altre exem­ple sen­zill d’uti­lit­za­ció de cano­na­des:
+cat /etc/passwd | more
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+25/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+En l’exem­ple ante­rior la sor­tida de l’ordre cat /etc/passwd s’uti­litza com a entrada de l’ordre more
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+per veure el con­tin­gut del fit­xer /etc/passwd per pàgi­nes, és a dir, fent una pausa cada vegada que
+s’omple la pan­ta­lla.
+Amb l’ordre more avan­cem de pàgina amb la tecla
+d’espai.
+
+Una línia d’ordres escrita amb una pipe es coneix com una pipe­line. La pipe­line no està limi­tada
+només a dues ordres. Es poden fer pipe­li­nes més llar­gues asso­ci­ant la sor­tida d’una ordre amb
+l’entrada de la següent i així suc­ces­si­va­ment.
+ordre1 | ordre2 | ordre3 | ordre4 ...
+
+Per exem­ple:
+cat /etc/passwd | sort | more
+
+En l’exem­ple ante­rior hi ha un enca­de­na­ment de tres ordres amb trans­mis­sió de les seves dades
+d’una a l’altra: la sor­tida de cat s’envia d’entrada a sort i la sor­tida de sort s’envia d’entrada a more.
+El resul­tat final con­sis­teix en mos­trar les línies del fit­xer /etc/passwd, orde­na­des i fent una pausa
+cada vegada que s’omple la pan­ta­lla.
+La manera com enlla­cem les dife­rents ordres no és ale­a­tò­ria, sinó que s’ha de fer de manera ade­‐
+quada per obte­nir els resul­tats espe­rats. En la cons­truc­ció de pipe­li­nes llar­gues convé ser metò­dics
+per evi­tar erra­des, és pre­fe­ri­ble fer la pipe­line pas a pas i anar com­pro­vant els resul­tats inter­me­dis
+per cor­re­gir els pos­si­bles errors. El pro­cés a seguir seria el següent:
+Com­pro­vem les dues pri­me­res ordres de la pipe­line: ordre1 | ordre2
+Si el resul­tat és cor­recte, ales­ho­res afe­gim l’ordre següent del pro­cés i com­pro­vem el resul­tat
+inter­medi: ordre1 | ordre2 | ordre3
+Si el resul­tat és cor­recte, afe­gim la següent: ordre1 | ordre2 | ordre3 | ordre4
+I així suc­ces­si­va­ment fins a obte­nir la pipe­line final.
+Quan encara no s’està fami­li­a­rit­zat amb l’ús de les cano­na­des, a vega­des es ten­deix a con­fon­dre el
+seu pro­pò­sit i no s’uti­lit­zen bé. No totes les ordres es poden enlla­çar de qual­se­vol manera amb
+cano­na­des. Per fer una pipe­line hem de tenir en compte les con­si­de­ra­ci­ons següents:
+Una ordre pot tenir a la dreta una cano­nada si admet sor­tida estàn­dard. Per exem­ple, les ordres
+ls, who, date, cat, etc.
+Una ordre pot tenir a l’esquerra una cano­nada si admet entrada estàn­dard. Per exem­ple, les
+ordres wall, write, etc.
+Una ordre pot tenir una cano­nada a la seva esquerra i a la seva dreta si admet tant entrada com
+sor­tida estàn­dards. Per exem­ple, les ordres sort, cut, grep, etc.
+
+One liners
+Entre els admi­nis­tra­dors de sis­te­mes és comú el terme one liners. Es refe­reix a un con­junt
+d’ordres uni­des gene­ral­ment per cano­na­des que enlla­ça­des ade­qua­da­ment pro­du­ei­xen un
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+26/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+resul­tat útil i pràc­tic. Per exem­ple, si volem saber quins són els cinc pro­ces­sos que con­su­mei­‐
+DE SISTEMES OPERATIUS
+xen més CPU ADMINISTRACIÓ
+podem exe­cu­tar el següent:
+ps -eo pcpu,user,pid,cmd | sort -r | head -6
+
+Fixeu-vos que hem uti­lit­zat l’opció o de l’ordre ps, que per­met per­so­na­lit­zar la sor­tida, i hem
+indi­cat les colum­nes que volem que es mos­trin. L’opció e de l’ordre indica exten­ded, és a dir,
+els pro­ces­sos de tots els usu­a­ris. Tota la sor­tida de ps és envi­ada a sort, que en fa un orde­na­‐
+ment invers basant-se en la pri­mera columna (pcpu). Per aca­bar, la sor­tida orde­nada és envi­‐
+ada a l’ordre head, que mos­trarà les sis pri­me­res línies (la cap­ça­lera i els cinc pro­ces­sos amb
+més con­sum).
+
+1.3.10. Fil­tres i 'pipe­li­nes'
+A Unix hi ha unes ordres que es fan ser­vir molt a les pipe­li­nes i que ano­me­nem fil­tres. Els fil­tres
+són ordres que accep­ten dades de l’entrada estàn­dard, escri­uen la sor­tida a la sor­tida estàn­dard i
+escri­uen els errors a la sor­tida estàn­dard d’errors, i mai modi­fi­quen les dades d’entrada. A causa del
+seu fun­ci­o­na­ment, és fre­qüent uti­lit­zar fil­tres a les pipe­li­nes.
+Per exem­ple, un fil­tre molt uti­li­tat és l’ordre sort, que ser­veix per orde­nar línies de text. L’ordre
+accepta dades des de l’entrada estàn­dard (el teclat). Per intro­duir-les només cal escriure l’ordre i
+pré­mer la tecla de retorn:
+sort
+
+El cur­sor se situa a sota espe­rant línies d’entrada. Escri­vim les línies de text que volem que l’ordre
+ordeni sepa­ra­des per salts de línia i, en aca­bar, hem de pré­mer la com­bi­na­ció de tecles Ctrl+D per
+indi­car la fina­lit­za­ció de l’entrada de dades. A con­ti­nu­a­ció ens apa­rei­xe­ran per pan­ta­lla les línies
+orde­na­des.
+Per com­pren­dre les pipe­li­nes de l’exem­ple és reco­ma­na­ble
+que les exe­cu­teu com­pro­vant els resul­tats inter­me­dis,
+seguint el pro­cés des­crit en l’apar­tat “Cano­na­des o pipes”
+d’aquesta uni­tat.
+
+Com que els fil­tres accep­ten les dades del teclat (entrada estàn­dard) i mos­tren el resul­tat per la pan­‐
+ta­lla (sor­tida estàn­dard), podem uti­lit­zar-los en pipe­li­nes per pro­ces­sar mit­jan­çant una cano­nada la
+sor­tida de qual­se­vol ordre que doni el resul­tat en línies de text. Per exem­ple:
+who | sort
+
+L’ordre who mos­tra una línia per a cada usu­ari con­nec­tat al sis­tema. En enviar aquesta sor­tida a
+l’entrada de sort, les línies es mos­tren orde­na­des per pan­ta­lla.
+Vegem un altre exem­ple:
+cat /etc/group | sort
+
+L’ordre cat mos­tra les línies del fit­xer /etc/group. En enviar aquesta sor­tida a l’ordre sort, les línies
+del fit­xer es mos­tren orde­na­des per pan­ta­lla, però el fit­xer no es modi­fica.
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+27/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Els fil­tres no només accep­ten dades des de l’entrada estàn­dard, sinó que també accep­ten dades des
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+d’un o més fit­xers posats com argu­ments en la línia d’ordres. Ales­ho­res, l’ordre ante­rior també es
+pot escriure així:
+sort /etc/group
+
+En gene­ral els fil­tres són molt útils per pro­ces­sar el con­tin­gut dels fit­xers de text. Alguns dels més
+uti­lit­zats són wc, sort, grep i cut:
+Comp­tar el nom­bre de línies d’un fit­xer:
+wc -l /etc/passwd
+Orde­nar alfa­bè­ti­ca­ment les línies del fit­xer:
+sort /etc/passwd
+Fer la recerca de línies que con­tin­guin un patró deter­mi­nat:
+grep root /etc/passwd
+Extreure parts de les línies del fit­xer:
+cut -d: -f1 /etc/passwd
+
+Exem­ple de cons­truc­ció de pipe­li­nes amb fil­tres
+Comp­teu els fit­xers del direc­tori actual.
+ls | wc -l
+
+Mos­treu els noms (només els noms) dels usu­a­ris donats d’alta al sis­tema orde­nats alfa­bè­ti­ca­‐
+ment.
+cat /etc/passwd | cut -f1 -d: | sort
+
+Mos­treu els noms dels usu­a­ris donats d’alta en el sis­tema i el seu shell d’inici, orde­nats alfa­‐
+bè­ti­ca­ment i sepa­rant els dos camps per un tabu­la­dor.
+cat /etc/passwd | cut -f1,7 -d: | sort | tr ":" "\t"
+
+Mos­treu l’iden­ti­fi­ca­dor (PID) i el nom (CMD) de tots els pro­ces­sos que per­ta­nyen a l’usu­ari
+root.
+ps -ef | grep "^root " | tr -s " " | cut -f2,8 -d" "
+
+Mos­treu una llista amb el pro­pi­e­tari, grup i nom de fit­xer de tots els fit­xers que hi ha a /etc.
+La llista ha d’estar orde­nada pel nom del grup del fit­xer.
+ls -l /etc | tr -s " " | cut -f3,4,9 -d" " | sort -k2 -t" "
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+28/29
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/continguts.html
+
+29/29
+
+

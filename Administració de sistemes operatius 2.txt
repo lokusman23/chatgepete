@@ -1,0 +1,227 @@
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+1. Acti­vi­tats
+Els shells dels sis­te­mes de tipus Unix
+L’objec­tiu d’aquesta acti­vi­tat és com­pro­var aspec­tes sobre els shells dis­po­ni­bles en els sis­te­mes de
+tipus Unix.
+Obriu un ter­mi­nal en una dis­tri­bu­ció de Linux Debian i com­pro­veu:
+1. El shell amb el qual esteu tre­ba­llant en ini­ciar una ses­sió amb el vos­tre usu­ari.
+2. Els shells vàlids per ini­ciar ses­sió en el vos­tre sis­tema.
+3. El shell per defecte que s’ini­cia per a l’usu­ari root del sis­tema.
+A la dis­tri­bu­ció de Linux Debian acce­dim a un ter­mi­nal des d’Apli­ca­ci­ons >
+Acces­so­ris > Ter­mi­nal.
+En ini­ciar la ses­sió podem saber el shell amb el qual estem tre­ba­llant exe­cu­tant:
+echo $SHELL
+
+El shell ens mos­tra el con­tin­gut de la vari­a­ble SHELL, per exem­ple:
+/bin/bash
+
+El fit­xer /etc/shells dóna infor­ma­ció sobre els shells vàlids per ini­ciar
+ses­sió en un sis­tema Unix deter­mi­nat. Que siguin vàlids no sig­ni­fica que esti­‐
+guin ins­tal·lats. Si es volen uti­lit­zar cal que prè­vi­a­ment ens asse­gu­rem que
+estan ins­tal·lats en el sis­tema. Exe­cu­tem:
+cat /etc/shells
+
+El shell per defecte que s’exe­cuta quan un usu­ari ini­cia ses­sió queda defi­nit en
+el fit­xer /etc/passwd, en el dar­rer camp de la línia cor­res­po­nent a l’usu­ari.
+Exe­cu­tem:
+grep root /etc/passwd
+
+El dar­rer camp ens mos­tra el shell d’inici de ses­sió de l’usu­ari:
+root:x:0:0:root:/root:/bin/bash
+
+Gene­ra­ció de noms de fit­xers amb expres­si­ons regu­lars
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/activitats.html
+
+1/5
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+L’objec­tiu d’aquesta acti­vi­tat és uti­lit­zar expres­si­ons regu­lars en la gene­ra­ció de noms de fit­xers.
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+1. Obriu un ter­mi­nal amb Bash i situeu-vos al direc­tori /bin del sis­tema. Exe­cu­teu l’ordre ls amb
+les expres­si­ons regu­lars neces­sà­ries per llis­tar els noms dels fit­xers que:
+Comen­cin per z.
+Comen­cin per z i aca­bin per e.
+Comen­cin per c i tin­guin al menys dos caràc­ters.
+Comen­cin per un caràc­ter alfa­bè­tic (minús­cu­les) i tin­guin només tres caràc­ters.
+Comen­cin per d, c o l i tin­guin només tres caràc­ters.
+Comen­cin per d, c o l, tin­guin al menys tres caràc­ters i aca­bin per s o d.
+2. Digueu quin és el sig­ni­fi­cat de les següents expres­si­ons regu­lars uti­lit­za­des en la gene­ra­ció de
+noms de fit­xers:
+[aAbB]
+[aA][bB]
+[A”-“Z]*
+[A-Z]*
+[!AZ]*
+[AZ]??
+3. Digueu qui­nes expres­si­ons regu­lars podeu uti­lit­zar per a la gene­ra­ció dels noms de fit­xers
+següents:
+Tots els noms que comen­cin per punt i la segona lle­tra dels quals sigui una vocal.
+Tots els noms que tin­guin cinc caràc­ters i el dar­rer no sigui un caràc­ter numè­ric.
+Tots els noms que comen­cin per un caràc­ter alfa­bè­tic o numè­ric.
+1. Les ordres són les següents:
+cd
+ls
+ls
+ls
+ls
+ls
+ls
+
+/bin
+z*
+z*e
+c?*
+[a-z]??
+[dcl]??
+[dcl]?[sd]
+
+2. El sig­ni­fi­cat de les expres­si­ons regu­lars és:
+[aAbB] Un sol caràc­ter que sigui a, A, b o B.
+[aA][bB] Dos caràc­ters, el pri­mer, a o A, i el segon, b o B.
+[A”-“Z]* Qual­se­vol cadena que comenci per A, - o Z.
+[A-Z]* Qual­se­vol cadena que comenci per lle­tra majús­cula.
+[!AZ]* Qual­se­vol cadena que no comenci per A ni Z.
+[AZ]?? Qual­se­vol cadena de tres caràc­ters que comenci per A o Z.
+3. Les expres­si­ons regu­lars que podem uti­lit­zar són:
+Tots els noms que comen­cin per punt i la segona lle­tra dels quals sigui una
+vocal: .[aeiou]*
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/activitats.html
+
+2/5
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Tots els noms que tin­guin cinc caràc­ters i el dar­rer dels quals no sigui un
+DE SISTEMES OPERATIUS
+caràc­terADMINISTRACIÓ
+numè­ric: ????[!0-9]
+Tots els noms que comen­cin per un caràc­ter alfa­bè­tic o numè­ric: [a-bAB0-9]*
+
+Vari­a­bles d’entorn
+L’objec­tiu d’aquesta acti­vat és com­pro­var el valor de les vari­a­bles d’entorn que hi ha pre­de­fi­ni­des
+en ini­ciar una ses­sió amb Bash.
+Obriu una ses­sió amb Bash i con­sul­teu el valor de les vari­a­bles d’entorn que estan defi­ni­des quan
+ini­cieu una ses­sió.
+Quin sig­ni­fi­cat tenen les vari­a­bles HOME, LOG­NAME, PS1, SHELL, PATH i RAN­DOM? Con­sul­‐
+teu el valor de cada una d’elles per sepa­rat.
+Per con­sul­tar el valor de les vari­a­bles d’entorn en la nos­tra ses­sió exe­cu­tem:
+env
+
+El sig­ni­fi­cat de les vari­a­bles és:
+HOME: direc­tori d’inici de l’usu­ari.
+LOG­NAME: nom de l’usu­ari con­nec­tat.
+PS1: indi­ca­dor d’ordres (prompt) pri­mari.
+SHELL: intèr­pret d’ordres uti­lit­zat.
+PATH: llista de direc­to­ris on el shell ha de loca­lit­zar els pro­gra­mes quan
+els escri­vim sense indi­car el camí on es tro­ben.
+RAN­DOM: número ale­a­tori.
+Per con­sul­tar el valor de cada una de les vari­a­bles per sepa­rat exe­cu­tem:
+echo $NOM_VARIABLE
+
+Subs­ti­tu­ció d'ordres
+L’objec­tiu d’aquesta acti­vi­tat és uti­lit­zar el meca­nisme de subs­ti­tu­ció d’ordres que pro­por­ci­ona el
+shell Bash.
+Doneu valor a les vari­a­bles següents fent ús de la subs­ti­tu­ció d’ordres i visu­a­lit­zeu el seu valor amb
+l’ordre echo:
+Una vari­a­ble ano­me­nada NOM amb el nom del vos­tre usu­ari. Uti­lit­zeu l’ordre who­ami.
+Una vari­a­ble ano­me­nada SER­VI­DOR amb el nom del vos­tre sis­tema. Uti­lit­zeu l’ordre host­‐
+name.
+Una vari­a­ble ano­me­nada DATA amb la data actual amb for­mat mm/dd/aa. Uti­lit­zeu l’ordre
+date amb el modi­fi­ca­dor neces­sari.
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/activitats.html
+
+3/5
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+Una vari­a­ble ano­me­nada HORA amb l’hora actual amb for­mat hh:mm:ss. Uti­lit­zeu l’ordre
+DE SISTEMES OPERATIUS
+date amb el modi­ADMINISTRACIÓ
+fi­ca­dor neces­sari.
+Una vari­a­ble ano­me­nada DIA amb el dia del mes (01… 31). Uti­lit­zeu l’ordre date amb el
+modi­fi­ca­dor neces­sari.
+Una vari­a­ble ano­me­nada SENARS amb la llista dels nom­bres senars que hi ha entre el 0 i el
+20.
+Una vari­a­ble ano­me­nada FIT­XERS amb els fit­xers del vos­tre direc­tori d’inici. Uti­lit­zeu l’ordre
+ls.
+
+NOM=$(whoami)
+echo $NOM
+SERVIDOR=$(hostname)
+echo $SERVIDOR
+DATA=$(date +%x)
+echo $DATA
+DATA=$(date +%X)
+echo $DATA
+DATA=$(date +%d)
+echo $DATA
+SENARS=$(seq 1 2 20)
+echo $SENARS
+FITXERS=$(ls ~)
+echo $FITXERS
+
+Fil­tres i pipe­li­nes
+L’objec­tiu d’aquesta acti­vi­tat és fer pipe­li­nes uti­lit­zant les ordres d’Unix que ano­me­nem fil­tres
+(grep, cut, sort, wc, etc.).
+Obriu una ses­sió amb Bash i mireu amb l’ordre cat el fit­xer /etc/passwd. Aquest fit­xer conté infor­‐
+ma­ció de tots els usu­a­ris que tenen un compte en el sis­tema. Cada línia cor­res­pon a un usu­ari dife­‐
+rent. Un exem­ple d’una línia cor­res­po­nent a un usu­ari en aquest fit­xer podria ser la següent:
+maria:x:1010:1004:Maria Claret:/home/maria:/bin/bash
+
+Cada un dels camps d’aques­tes línies venen deli­mi­tats pel caràc­ter : i tenen el sig­ni­fi­cat següent:
+Camp 1: nom d’usu­ari (a l’exem­ple: Maria).
+Camp 2: password codi­fi­cat en forma d’x.
+Camp 3: iden­ti­fi­ca­dor numè­ric de l’usu­ari (a l’exem­ple: 1010).
+Camp 4: iden­ti­fi­ca­dor numè­ric del grup pri­mari al qual per­tany l’usu­ari (a l’exem­ple: 1004).
+Camp 5: infor­ma­ció de l’usu­ari (a l’exem­ple: Maria Claret).
+Camp 6: direc­tori de tre­ball de l’usu­ari (a l’exem­ple: /home/maria).
+Camp 7: intèr­pret d’ordres uti­lit­zat per aquest usu­ari (a l’exem­ple: /bin/bash).
+Uti­lit­zant les ordres que ano­me­nem fil­tres i tenint en compte el for­mat de les línies del fit­xer
+/etc/passwd, reso­leu les qües­ti­ons següents amb pipe­li­nes:
+Mos­treu el con­tin­gut del fit­xer /etc/passwd orde­nat alfa­bè­ti­ca­ment i fent una pausa cada cop que
+s’omple la pan­ta­lla.
+1. Comp­teu el nom­bre d’usu­a­ris donats d’alta al sis­tema.
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/activitats.html
+
+4/5
+
+8/5/23, 9:41
+
+Administració de sistemes operatius
+
+2. Com­pro­veu si exis­teix o no una entrada del vos­tre usu­ari en aquest fit­xer.
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+3. Llis­teu tots els usu­a­ris del mateix grup que el vos­tre que exis­tei­xin en aquest fit­xer.
+4. Llis­teu només els noms d’usu­ari orde­nats alfa­bè­ti­ca­ment.
+5. Llis­teu només els iden­ti­fi­ca­dors numè­rics d’usu­ari orde­nats numè­ri­ca­ment.
+6. Llis­teu només els dife­rents shells usats pels usu­a­ris del sis­tema.
+7. Llis­teu els noms dels usu­ari que tin­guin un shell d’inici dife­rent de /bin/bash.
+
+cat /etc/passwd | wc -l
+grep ^$USER /etc/passwd
+grep ^.*:.*:$GROUPS /etc/passwd
+cut -f1 -d: /etc/passwd | sort
+cut -f3 -d: /etc/passwd | sort -n
+cut -f7 -d: /etc/passwd | sort -u
+cut -f1,7 -d: /etc/passwd | grep -v bash | cut -f1 -d:
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/activitats.html
+
+5/5
+
+

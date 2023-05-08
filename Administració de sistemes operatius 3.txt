@@ -1,0 +1,143 @@
+8/5/23, 9:42
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+
+1. Exer­ci­cis d'auto­a­va­lu­a­ció
+Exer­cici 1
+Com­ple­teu les afir­ma­ci­ons amb l’expres­sió cor­recta.
+Núm Pre­gunta
+1
+
+El
+
+2
+
+Un llenguatge interpretat és aquell en què les ins­truc­ci­ons es tra­du­ei­xen una a una en temps
+d’exe­cu­ció a un llen­guatge inter­medi o llen­guatge màquina.
+
+3
+
+Els cir­cuits interns de l’ordi­na­dor tre­ba­llen amb
+
+4
+
+Un llenguatge d’alt nivell
+
+codi font
+
+no és direc­ta­ment exe­cu­ta­ble per l’ordi­na­dor.
+
+codi màquina
+
+.
+
+és pro­per al llen­guatge humà.
+
+Exer­cici 2
+Els llen­guat­ges de guions són un tipus de llen­guatge de pro­gra­ma­ció d’alt nivell i…
+Núm Pre­gunta
+
+V
+
+1
+
+…gai­rebé sem­pre són llen­guat­ges com­pi­lats.
+
+2
+
+…sovint s’uti­lit­zen per ampliar les capa­ci­tats d’un altre llen­guatge, entorn o apli­ca­ció.
+
+3
+
+…alguns ser­vei­xen per a més d’un pro­pò­sit com ara el llen­guatge PHP.
+
+4
+
+…la majo­ria d’intèr­prets d’ordres incor­po­ren un llen­guatge de guions propi.
+
+F
+
+Exer­cici 3
+Un intèr­pret d’ordres…
+Núm Pre­gunta
+1
+
+… forma part del nucli del sis­tema ope­ra­tiu.
+
+2
+
+… actua com a inter­fí­cie entre l’usu­ari i la resta del sis­tema.
+
+3
+
+… és la capa més interna d’un sis­tema ope­ra­tiu.
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/exercicis.html
+
+1/2
+
+8/5/23, 9:42
+
+Administració de sistemes operatius
+
+ADMINISTRACIÓ DE SISTEMES OPERATIUS
+… és un pro­grama que rep ordres del sis­tema ope­ra­tiu.
+
+4
+
+Exer­cici 4
+Rela­ci­o­neu les següents des­crip­ci­ons de dife­rents intèr­prets d’ordres de sis­te­mes ope­ra­tius amb el
+nom del shell que els cor­res­pon.
+Núm Pre­gunta
+1
+
+Shell de sis­te­mes basats en Win­dows NT
+
+2
+
+Shell escrit per Steve Bourne
+
+3
+
+Shell estàn­dard a Linux i Mac OS X
+
+4
+
+Shell ori­en­tat a objec­tes
+
+Res­posta
+cmd.exe
+/bin/sh
+Bash
+PowerShell
+
+Exer­cici 5
+Els shells scripts o guions de shell són…
+Núm Pre­gunta
+1
+
+… pro­gra­mes escrits per a un deter­mi­nat intèr­pret d’ordres.
+
+2
+
+… un tipus de pro­gra­mes espe­cí­fics dels entorns de tipus Unix.
+
+3
+
+… molt uti­lit­zats en l’àmbit de l’admi­nis­tra­ció de sis­te­mes.
+
+4
+
+… molt uti­lit­zats per fer apli­ca­ci­ons web.
+
+V
+
+F
+
+https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m06_/web/fp_asx_m06_htmlindex/WebContent/u4/a1/exercicis.html
+
+2/2
+
+
